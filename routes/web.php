@@ -18,18 +18,20 @@ Route::get('/', function () {
 });
 */
 Route::get('/', function () {
-    return "Pantalla principal";
+    return view('inicio');
 });
 Route::get('equipos', function () {
-    return "Listado de equipos";
+    return view('equipos.index');
 });
 Route::get('equipos/create', function () {
-    return "Crear equipo";
+    return view('equipos.create');
 });
 Route::get('equipos/{id}', function ($id) {
-    return "Detalle de equipo $id";
+    return view('equipos.show')
+    ->with('id', $id);
 });
 Route::get('equipos/{id}/edit', function ($id) {
-    return "Modificar equipo $id";
+    return view('equipos.edit')
+    ->with('id', $id);
 });
 
