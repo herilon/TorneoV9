@@ -1,37 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\EquiposController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-Route::get('/', function () {
-    return view('inicio');
-});
-Route::get('equipos', function () {
-    return view('equipos.index');
-});
-Route::get('equipos/create', function () {
-    return view('equipos.create');
-});
-Route::get('equipos/{id}', function ($id) {
-    return view('equipos.show')
-    ->with('id', $id);
-});
-Route::get('equipos/{id}/edit', function ($id) {
-    return view('equipos.edit')
-    ->with('id', $id);
-});
-
+Route::get('/', [InicioController::class, 'index']);
+Route::resource('equipos', EquiposController::class);
