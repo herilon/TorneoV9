@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Torneo')
+@section('title', 'Crear equipo')
 @section('content')
 	<form action="/equipos" method="post" enctype="multipart/form-data">
 		@csrf

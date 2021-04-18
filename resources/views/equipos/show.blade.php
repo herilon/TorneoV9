@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Torneo')
+@section('title', 'Detalle equipo')
 @section('content')
     <div class="row">
         <div class="col-sm-4">
