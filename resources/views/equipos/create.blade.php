@@ -14,9 +14,9 @@
 		<div class="form-group">
     	<label for="municipio">Municipo</label>
 	    <select class="form-control" id="municipio" name="municipio">
-            <option value="1">Manizales</option>
-            <option value="2">Pereira</option>
-            <option value="3">Armenia</option>
+	    	@foreach($municipios as $municipio)
+            	<option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+            @endforeach
         </select>
   	</div>
 		<div class="form-group">

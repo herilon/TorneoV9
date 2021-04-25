@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Municipio;
 
 class EquiposController extends Controller
 {
@@ -50,7 +51,9 @@ class EquiposController extends Controller
      */
     public function create()
     {
-        return view('equipos.create');
+        $municipios = Municipio::all();
+        return view('equipos.create')
+                    ->with('municipios', $municipios);
     }
 
     /**
