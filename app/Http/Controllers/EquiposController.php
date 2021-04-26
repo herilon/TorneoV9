@@ -65,6 +65,12 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'dt' => 'required',
+            'municipio' => 'required',
+            'escudo' => 'required|image'
+        ]);
         if($request->hasFile('escudo')){
             $file = $request->file('escudo');
             $escudo = time() . $file->getClientOriginalName();
