@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Municipio;
+use App\Models\Equipo;
 
 class EquiposController extends Controller
 {
@@ -64,7 +65,18 @@ class EquiposController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('escudo')){
+            $file = $request->file('escudo');
+            $escudo = time() . $file->getClientOriginalName();
+            $file->move("images/equipos", $escudo);
+        }
+        $equipo = new Equipo();
+        $equipo->nombre = $request->nombre;
+        $equipo->dt = $request->dt;
+        $equipo->municipio_id = $request->municipio;
+        $equipo->escudo = $escudo;
+        $equipo->save();
+        return "Guardado";
     }
 
     /**
