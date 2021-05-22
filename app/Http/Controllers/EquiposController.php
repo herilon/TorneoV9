@@ -77,7 +77,7 @@ class EquiposController extends Controller
         $equipo->municipio_id = $request->municipio;
         $equipo->escudo = $escudo;
         $equipo->save();
-        return "Guardado";
+        return redirect()->route('equipos.index')->with('status', 'equipo creado');
     }
 
     /**
