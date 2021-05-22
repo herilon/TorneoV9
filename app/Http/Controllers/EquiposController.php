@@ -63,9 +63,9 @@ class EquiposController extends Controller
      */
     public function show($id)
     {
+        $equipo = Equipo::find($id);
         return view('equipos.show')
-        ->with('id', $id)
-        ->with('equipo', $this->equipos[$id]);
+        ->with('equipo', $equipo);
     }
 
     /**
