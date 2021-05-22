@@ -9,32 +9,6 @@ use App\Http\Requests\StoreEquiposRequest;
 
 class EquiposController extends Controller
 {
-    private $equipos = array(
-        array(
-            'nombre' => 'equipo 1',
-            'dt' => 'D.T. 1',
-            'municipio' => 'Municipio 1',
-            'escudo' => 'http://ximg.es/200x300/000/fff&text=equipo1'
-        ),
-        array(
-            'nombre' => 'equipo 2',
-            'dt' => 'D.T. 2',
-            'municipio' => 'Municipio 2',
-            'escudo' => 'http://ximg.es/200x300/000/fff&text=equipo2'
-        ),
-        array(
-            'nombre' => 'equipo 3',
-            'dt' => 'D.T. 3',
-            'municipio' => 'Municipio 3',
-            'escudo' => 'http://ximg.es/200x300/000/fff&text=equipo3'
-        ),
-        array(
-            'nombre' => 'equipo 4',
-            'dt' => 'D.T. 4',
-            'municipio' => 'Municipio 4',
-            'escudo' => 'http://ximg.es/200x300/000/fff&text=equipo4'
-        )
-    );
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +16,9 @@ class EquiposController extends Controller
      */
     public function index()
     {
+        $equipos = Equipo::all();
         return view('equipos.index')
-        ->with('equipos', $this->equipos);
+        ->with('equipos', $equipos);
     }
 
     /**
