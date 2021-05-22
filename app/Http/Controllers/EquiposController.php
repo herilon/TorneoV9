@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Municipio;
 use App\Models\Equipo;
+use App\Http\Requests\StoreEquiposRequest;
 
 class EquiposController extends Controller
 {
@@ -63,14 +64,8 @@ class EquiposController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEquiposRequest $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'dt' => 'required',
-            'municipio' => 'required',
-            'escudo' => 'required|image'
-        ]);
         if($request->hasFile('escudo')){
             $file = $request->file('escudo');
             $escudo = time() . $file->getClientOriginalName();

@@ -5,14 +5,14 @@
 		@csrf
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
-			<input type="text" name="nombre" id="nombre" class="form-control">
+			<input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre') }}">
 			@error('nombre')
 				<small>{{ $message }}</small>
 			@enderror
 		</div>
 		<div class="form-group">
 			<label for="dt">D.T.</label>
-			<input type="text" name="dt" id="dt" class="form-control">
+			<input type="text" name="dt" id="dt" class="form-control" value="{{ old('dt') }}">
 			@error('dt')
 	    		<small>{{ $message }}</small>
 			@enderror
@@ -38,3 +38,5 @@
 		<button type="submit" class="btn btn-primary">Crear</button>
 	</form>
 @endsection
+
+
