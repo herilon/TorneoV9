@@ -76,8 +76,11 @@ class EquiposController extends Controller
      */
     public function edit($id)
     {
+        $equipo = Equipo::find($id);
+        $municipios = Municipio::all();
         return view('equipos.edit')
-        ->with('id', $id);
+                    ->with('equipo', $equipo)
+                    ->with('municipios', $municipios);
     }
 
     /**
@@ -89,7 +92,17 @@ class EquiposController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipo = Equipo::find($id);
+        $equipo->nombre = $request->nombre;
+        $equipo->dt = $request->dt;
+        $equipo->municipio_id = $request->municipio;
+        if($request->hasFile('escudo')){
+            $file = $request->file('escudo');
+            $escudo = $equipo->escudo;
+            $file->move("images/equipos", $escudo);
+        }
+        $equipo->save();
+        return redirect()->route('equipos.index')->with('status', 'equipo actualizado');
     }
 
     /**
@@ -100,6 +113,8 @@ class EquiposController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $equipo = Equipo::find($id);
+        $equipo->delete();
+        return redirect()->route('equipos.index')->with('status', 'equipo eliminado');   
     }
 }
