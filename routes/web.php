@@ -5,3 +5,6 @@ use App\Http\Controllers\EquiposController;
 
 Route::get('/', [InicioController::class, 'index']);
 Route::resource('equipos', EquiposController::class);
+Route::get('tailwind', function(){
+	return view('layouts.app');
+});
