@@ -7,8 +7,9 @@
     <title>Torneo - @yield('title')</title>
   </head>
   <body>
-    <div class="container" style="background-color: red;">
-      <h1>Encabezado</h1>
+    <div class="container">
+        @include('partials.navbar')
+        @yield('content')
     </div>
   </body>
 </html>
