@@ -4,4 +4,4 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\EquiposController;
 
 Route::get('/', [InicioController::class, 'index']);
-Route::resource('equipos', EquiposController::class);
+Route::resource('equipos', EquiposController::class)->middleware('auth');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Municipio;
 use App\Models\Equipo;
 use App\Http\Requests\StoreEquiposRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EquiposController extends Controller
 {
@@ -76,6 +77,9 @@ class EquiposController extends Controller
      */
     public function edit($id)
     {
+        if(Auth::user()->rol == 2){
+            return redirect()->route('equipos.index');
+        }
         $equipo = Equipo::find($id);
         $municipios = Municipio::all();
         return view('equipos.edit')
